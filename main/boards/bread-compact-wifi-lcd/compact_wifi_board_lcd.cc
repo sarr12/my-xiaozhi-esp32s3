@@ -7,6 +7,8 @@
 #include "config.h"
 #include "mcp_server.h"
 #include "lamp_controller.h"
+#include "servo_controller.h"
+#include "wire_check.h"
 #include "led/single_led.h"
 
 #include <esp_log.h>
@@ -136,6 +138,9 @@ private:
     // 物联网初始化，添加对 AI 可见设备
     void InitializeTools() {
         static LampController lamp(LAMP_GPIO);
+        static ServoController servo(SERVO_GPIO, SERVO_BOOT_SELFTEST_CYCLES);
+        static WireCheck wire_check(WIRE_CHECK_DRIVE_GPIO, WIRE_CHECK_SENSE_GPIO,
+                                    SERVO_GPIO, [&servo]() { servo.Reattach(); });
     }
 
 public:

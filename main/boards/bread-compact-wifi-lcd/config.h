@@ -286,4 +286,14 @@
 // A MCP Test: Control a lamp
 #define LAMP_GPIO GPIO_NUM_18
 
+// A MCP Test: Control a servo (SG90) on a free GPIO
+#define SERVO_GPIO GPIO_NUM_14
+
+// Swing the servo right after boot, before Wi-Fi/MCP come up. Set 0 to disable.
+#define SERVO_BOOT_SELFTEST_CYCLES 10
+
+// Poor-man's continuity tester: connect the wire under test between these two.
+#define WIRE_CHECK_DRIVE_GPIO GPIO_NUM_13
+#define WIRE_CHECK_SENSE_GPIO GPIO_NUM_12
+
 #endif // _BOARD_CONFIG_H_
